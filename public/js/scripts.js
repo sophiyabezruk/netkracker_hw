@@ -164,6 +164,7 @@ const html = cards
           </div>
         </div>
         <div class="card_button_wrapper">
+        <div class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></div>
           <button class="btn btn-light">Buy Now</button>
         </div>
       </div>
