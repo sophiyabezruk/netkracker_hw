@@ -42,6 +42,24 @@
 }
 
 
+.shopping-cart-btn {
+  display: flex;
+  padding-top: 0;
+}
+
+#shopping-cart {
+  margin-top: 30%;
+}
+#shopping-cart-count {
+  background-color:#BCDED8;
+  margin-top: 10%;
+  font-size: 17px;
+  border-radius: 25px;
+  height: 25px;
+  width: 25px;
+}
+
+
 .card_title {
   display: flex;
   z-index: 12;

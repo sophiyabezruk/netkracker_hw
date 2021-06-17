@@ -135,6 +135,44 @@ const cards = [
 
 const cardsNode = document.getElementById('cards-content');
 
+function addItemToCart(item) {
+  const cart = JSON.parse(localStorage.getItem('cart') || "[]");
+  
+  cart.push(item);
+  
+  localStorage.removeItem('cart')
+  localStorage.setItem('cart', JSON.stringify(cart));
+  return cart
+}
+
+function removeItemFromCart(item) {
+  const cart = JSON.parse(localStorage.getItem('cart') || "[]");
+
+  const itemIndex = cart.findIndex((i) => i.id === item.id)
+  cart.splice(itemIndex, 1);
+
+  localStorage.removeItem('cart')
+  localStorage.setItem('cart', JSON.stringify(cart));
+  return cart
+}
+
+function buyNow(id) {
+  const item = cards.find((card) => card.id === +id);
+  const cart = addItemToCart(item)
+
+  const cartElementCount = document.getElementById('shopping-cart-count')
+
+  if (cartElementCount) {
+    cartElementCount.innerHTML = `<div id="shopping-cart-count">${cart.length}</div>`;
+    return;
+  }
+
+  const el = document.createElement('div');
+  const cartElement = document.getElementById('shopping-cart')
+  el.innerHTML = `<div id="shopping-cart-count">${cart.length}</div>`;
+  cartElement.after(el)
+}
+
 const html = cards
   .map((card) => {
     return `
@@ -161,8 +199,8 @@ const html = cards
           </div>
         </div>
         <div class="card_button_wrapper">
-        <div class="card-title pricing-card-title">$10<small class="text-muted fw-light">/mo</small></div>
-          <button class="btn btn-light">Buy Now</button>
+        <div class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></div>
+          <button class="btn btn-light" onclick="buyNow('${card.id}')">Buy Now</button>
         </div>
       </div>
     </div>
