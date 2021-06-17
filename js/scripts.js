@@ -190,14 +190,23 @@ function buyNow(id) {
   const item = cards.find((card) => card.id === +id);
   const cart = addItemToCart(item)
 
-  updateCartModal()
-  updateCartCount(cart)
-  var myModal = document.getElementById('myModal')
-  var myInput = document.getElementById('myInput')
+  const preloader = document.createElement('div');
+  preloader.innerHTML = '<div id="loader"></div>';
+  document.body.appendChild(preloader);
 
-  myModal.addEventListener('shown.bs.modal', function () {
-    myInput.focus()
-  })
+  setTimeout(() => {
+  
+    preloader.remove()
+    document.getElementById('success-modal').style.display = 'block';
+  
+    setTimeout(() => {
+  
+      document.getElementById('success-modal').style.display = 'none';
+      updateCartModal()
+      updateCartCount(cart)
+  
+    }, 1000);
+  }, 2000);
 }
 
 function updateCartModal() {
