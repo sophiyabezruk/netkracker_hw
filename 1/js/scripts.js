@@ -192,12 +192,23 @@ function buyNow(id) {
 
   updateCartModal()
   updateCartCount(cart)
-  var myModal = document.getElementById('myModal')
-  var myInput = document.getElementById('myInput')
-
-  myModal.addEventListener('shown.bs.modal', function () {
-    myInput.focus()
-  })
+  // window.prompt("sometext");
+  // console.log(document.getElementById('shopping-cart-modal'))
+  // <div id="loader"></div>
+  const preloader = document.createElement('div');
+  preloader.innerHTML = '<div id="loader"></div>';
+  document.body.appendChild(preloader);
+  // console.log('preloader'); // open preloader
+  setTimeout(() => {
+    preloader.remove()
+    document.getElementById('modal-btn').click() // open modal
+    setTimeout(() => {
+      document.getElementById('modal-btn').click() // close modal
+    }, 2000);
+  }, 2000);
+  // setTimeout(function(){
+    // $('#myModal').modal('show');
+// }, 1000);
 }
 
 function updateCartModal() {
