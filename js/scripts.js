@@ -1,36 +1,33 @@
 const cards = [
-  // {
-  //   id: 1,
-  //   title: 'Quest-bot',
-  //   subtitle:
-  //     'Пишет новым пользователям сервера в личку и предлагает пройти квесты. За прохождения квеста пользователь получает роли на сервере',
-  //   image: () =>
-  //     `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
-  //   features: [
-  //     {
-  //       title: 'много уровней квеста',
-  //     },
-  //     {
-  //       title: 'более 100 тем',
-  //     },
-  //     {
-  //       title: 'рандомные вопросы',
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Сredit-bot',
-  //   subtitle:
-  //     'Чат бот помогает сделать оценку кредитоспособности и направляет эту информацию менеджеру.  Кроме этого раз в сутки присылает полезные статьи по теме.',
-  //   image: () =>
-  //     `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
-  //   features: [
-  //     {
-  //       title: 'автоматизация',
-  //     },
-  //   ],
-  // },
+  {
+    id: 1,
+    title: 'Quest-bot',
+    subtitle:
+      'Writes to new users of the server in a personal message and offers to complete quests. For completing the quest, the user receives roles on the server',
+    image: () =>
+      `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
+    features: [
+      {
+        title: 'A lot of levels',
+      },
+      {
+        title: 'Over 100 themes',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Сredit-bot',
+    subtitle:
+      'Helps to make a credit assessment and sends this information to the manager',
+    image: () =>
+      `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
+    features: [
+      {
+        title: 'Automatization',
+      },
+    ],
+  },
   {
     id: 3,
     title: 'Secret-bot',
@@ -164,7 +161,7 @@ const html = cards
           </div>
         </div>
         <div class="card_button_wrapper">
-        <div class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></div>
+        <div class="card-title pricing-card-title">$10<small class="text-muted fw-light">/mo</small></div>
           <button class="btn btn-light">Buy Now</button>
         </div>
       </div>
