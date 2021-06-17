@@ -164,17 +164,7 @@ function removeItemFromCart(item) {
   return cart
 }
 
-function removeItemCartModal(id) {
-  const item = cards.find((card) => card.id === +id);
-  const cart = removeItemFromCart(item)
-
-  updateCartModal()
-}
-
-function buyNow(id) {
-  const item = cards.find((card) => card.id === +id);
-  const cart = addItemToCart(item)
-
+function updateCartCount(cart) {
   const cartElementCount = document.getElementById('shopping-cart-count')
 
   if (cartElementCount) {
@@ -186,6 +176,28 @@ function buyNow(id) {
   const cartElement = document.getElementById('shopping-cart')
   el.innerHTML = `<div id="shopping-cart-count">${cart.length}</div>`;
   cartElement.after(el)
+}
+
+function removeItemCartModal(id) {
+  const item = cards.find((card) => card.id === +id);
+  const cart = removeItemFromCart(item)
+
+  updateCartModal()
+  updateCartCount(cart)
+}
+
+function buyNow(id) {
+  const item = cards.find((card) => card.id === +id);
+  const cart = addItemToCart(item)
+
+  updateCartModal()
+  updateCartCount(cart)
+  var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
 }
 
 function updateCartModal() {
