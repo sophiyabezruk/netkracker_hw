@@ -4,6 +4,7 @@ const cards = [
     title: 'Quest-bot',
     subtitle:
       'Writes to new users of the server in a personal message and offers to complete quests. For completing the quest, the user receives roles on the server',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -20,6 +21,7 @@ const cards = [
     title: 'Сredit-bot',
     subtitle:
       'Helps to make a credit assessment and sends this information to the manager',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -32,6 +34,7 @@ const cards = [
     id: 3,
     title: 'Secret-bot',
     subtitle: 'Information bot for secret customers',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -50,6 +53,7 @@ const cards = [
     id: 4,
     title: 'Spam-bot',
     subtitle: 'Bot with 2 mailing plans (paid and free)',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -66,6 +70,7 @@ const cards = [
     title: 'Lottery-bot',
     subtitle:
       'The manager verifies the receipt in the admin area, after which the user becomes a participant in the prize drawing',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -81,6 +86,7 @@ const cards = [
     id: 6,
     title: 'Hookah-bot',
     subtitle: 'Bot directory for buying products.',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -99,6 +105,7 @@ const cards = [
     id: 7,
     title: 'FAQ Bot',
     subtitle: 'Automation of consulting ',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -117,6 +124,7 @@ const cards = [
     id: 8,
     title: 'Course-bot',
     subtitle: 'Selling an educational course',
+    price: 10,
     image: () =>
       `https://picsum.photos/id/${Math.round(Math.random() * 52)}/52`,
     features: [
@@ -156,6 +164,13 @@ function removeItemFromCart(item) {
   return cart
 }
 
+function removeItemCartModal(id) {
+  const item = cards.find((card) => card.id === +id);
+  const cart = removeItemFromCart(item)
+
+  updateCartModal()
+}
+
 function buyNow(id) {
   const item = cards.find((card) => card.id === +id);
   const cart = addItemToCart(item)
@@ -171,6 +186,35 @@ function buyNow(id) {
   const cartElement = document.getElementById('shopping-cart')
   el.innerHTML = `<div id="shopping-cart-count">${cart.length}</div>`;
   cartElement.after(el)
+}
+
+function updateCartModal() {
+  const cartDataElement = document.getElementById('shopping-cart-modal-data');
+  const cartTotalElement = document.getElementById('shopping-cart-modal-total');
+
+  const cartData = JSON.parse(localStorage.getItem('cart') || "[]");
+  let totalPrice = 0;
+
+  cartDataElement.innerHTML = cartData.map((item, index) => {
+    totalPrice += item.price;
+    return (`
+      <tr>
+        <th scope="row">${index}</th>
+        <td>${item.title}</td>
+        <td>${item.price}$</td>
+        <td><button class='btn btn-light'type="button" onclick="removeItemCartModal('${item.id}')">x</button></td>
+      <tr>
+    `)
+  }).join('')
+
+  cartTotalElement.innerHTML = `
+    <tr>
+      <th scope="row"></th>
+      <td>Total</td>
+      <td>${totalPrice}$</td>
+      <td></td>
+    <tr>
+  `
 }
 
 const html = cards
@@ -199,7 +243,7 @@ const html = cards
           </div>
         </div>
         <div class="card_button_wrapper">
-        <div class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></div>
+        <div class="card-title pricing-card-title">${card.price}$<small class="text-muted fw-light">/mo</small></div>
           <button class="btn btn-light" onclick="buyNow('${card.id}')">Buy Now</button>
         </div>
       </div>
