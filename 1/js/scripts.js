@@ -190,25 +190,23 @@ function buyNow(id) {
   const item = cards.find((card) => card.id === +id);
   const cart = addItemToCart(item)
 
-  updateCartModal()
-  updateCartCount(cart)
-  // window.prompt("sometext");
-  // console.log(document.getElementById('shopping-cart-modal'))
-  // <div id="loader"></div>
   const preloader = document.createElement('div');
   preloader.innerHTML = '<div id="loader"></div>';
   document.body.appendChild(preloader);
-  // console.log('preloader'); // open preloader
+
   setTimeout(() => {
+  
     preloader.remove()
-    document.getElementById('modal-btn').click() // open modal
+    document.getElementById('success-modal').style.display = 'block';
+  
     setTimeout(() => {
-      document.getElementById('modal-btn').click() // close modal
-    }, 2000);
+  
+      document.getElementById('success-modal').style.display = 'none';
+      updateCartModal()
+      updateCartCount(cart)
+  
+    }, 1000);
   }, 2000);
-  // setTimeout(function(){
-    // $('#myModal').modal('show');
-// }, 1000);
 }
 
 function updateCartModal() {

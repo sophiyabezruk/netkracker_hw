@@ -157,6 +157,7 @@
   border-top: 16px solid #3498db;
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
+  background: rgba(71, 28, 28, 0.2)
 }
 
 @-webkit-keyframes spin {
@@ -167,4 +168,27 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.success-modal {
+  margin: 0 0;
+  padding: 0 0;
+  background-color: blue;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.success-modal-dialog {
+  margin: auto auto;
+  padding: auto auto;
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.success-modal-body {
+  text-align: center;
+  background-color: #0e8a3e;
+  color: white;
 }
