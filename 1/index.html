@@ -7,8 +7,29 @@
     <link href="css/styles2.css" rel="stylesheet">
     <title>Bot-Planet</title>
   </head>
-  <body>
+  <body onload="myFunction()" style="margin:0;">
     <header>
+<!-- влад, это my shame и надо вырезать, но вдруг тебе будет полезно -->
+    <div id="loader"></div>
+
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      <h2>Tada!</h2>
+      <p>Some text in my newly loaded page..</p>
+    </div>
+      <script>
+        var myVar;
+        
+        function myFunction() {
+          myVar = setTimeout(showPage, 3000);
+        }
+        
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("success-modal").style.display = "block";
+        }
+      </script>
+<!-- --- -->
+
 
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
@@ -89,7 +110,19 @@
           </div>
         </div>
       </div>
-   
+
+<!-- Success Modal -->
+      <div id="success-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Added to cart!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container footer_wrapper">
         <div class="text-muted">         
