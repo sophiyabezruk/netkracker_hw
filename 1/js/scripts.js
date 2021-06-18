@@ -152,7 +152,7 @@ function addItemToCart(item) {
   localStorage.setItem('cart', JSON.stringify(cart));
   return cart
 }
-
+// 3.2
 function removeItemFromCart(item) {
   const cart = JSON.parse(localStorage.getItem('cart') || "[]");
 
@@ -185,7 +185,7 @@ function removeItemCartModal(id) {
   updateCartModal()
   updateCartCount(cart)
 }
-
+// 3.3
 function buyNow(id) {
   const item = cards.find((card) => card.id === +id);
   const cart = addItemToCart(item)
@@ -209,6 +209,7 @@ function buyNow(id) {
   }, 2000);
 }
 
+// 3.2
 function updateCartModal() {
   const cartDataElement = document.getElementById('shopping-cart-modal-data');
   const cartTotalElement = document.getElementById('shopping-cart-modal-total');
@@ -238,6 +239,7 @@ function updateCartModal() {
   `
 }
 
+// 3.4
 const html = cards
   .map((card) => {
     return `
